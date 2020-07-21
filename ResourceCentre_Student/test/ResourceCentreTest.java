@@ -1,5 +1,6 @@
 import static org.junit.Assert.*;
 
+import static org.junit.Assert.*;
 import java.util.ArrayList;
 
 import org.junit.After;
@@ -51,6 +52,15 @@ public class ResourceCentreTest {
 	@Test
 	public void addChromebookTest() {
 		//fail("Not yet implemented");
+		assertNotNull("Test if there is valid Chrombook arrayList to add to", chromebookList);
+	
+		ResourceCentre.addChromebook(chromebookList, cb1);
+		assertEquals("Test if that Chromebook arraylist size is 1?", 1, chromebookList.size());
+		
+		assertSame("Test that Chromebook is added as 1st item of the list?", cb1, chromebookList.get(0));
+		
+		ResourceCentre.addChromebook(chromebookList, cb2);
+		assertEquals("Test that Camcorder arraylist size is 2?", 2, chromebookList.size());
 		// write your code here
 	}
 	
@@ -82,6 +92,21 @@ public class ResourceCentreTest {
 	public void retrieveAllChromebookTest() {
 		//fail("Not yet implemented");
 		// write your code here
+		assertNotNull("Test if there is valid Chromebook arraylist to add to", chromebookList);
+		String allChromebook= ResourceCentre.retrieveAllChromebook(chromebookList);
+		String testOutput = "";
+		assertEquals("Check that ViewAllCamcorderlist", testOutput, allChromebook);
+		ResourceCentre.addChromebook(chromebookList, cb1);
+		ResourceCentre.addChromebook(chromebookList, cb2);
+		assertEquals("Test if that Chromebook arraylist size is 2?", 2, chromebookList.size());
+		
+		//test if the expected output string same as the list of chromebook retrieved from the ResourceCentre
+		allChromebook = ResourceCentre.retrieveAllChromebook(chromebookList);
+
+		testOutput = String.format("%-10s %-30s %-10s %-10s %-20s\n","CB0011", "My Google Chromebook 1st", "Yes","", "Mac OS");
+		testOutput += String.format("%-10s %-30s %-10s %-10s %-20s\n","CB0012", "SAMSUNG Chromebook 4+","Yes", "", "Win 10");
+	
+		assertEquals("Check that ViewAllChromebooklist", testOutput, allChromebook);
 	}
 
 	@Test
