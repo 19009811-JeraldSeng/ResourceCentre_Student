@@ -101,7 +101,6 @@ public class ResourceCentreTest {
 		ResourceCentre.addChromebook(chromebookList, cb1);
 		ResourceCentre.addChromebook(chromebookList, cb2);
 		assertEquals("Test if that Chromebook arraylist size is 2?", 2, chromebookList.size());
-
 		// test if the expected output string same as the list of chromebook retrieved
 		// from the ResourceCentre
 		allChromebook = ResourceCentre.retrieveAllChromebook(chromebookList);
@@ -118,7 +117,12 @@ public class ResourceCentreTest {
 	public void doLoanCamcorderTest() {
 		// fail("Not yet implemented");
 		// write your code here
-
+		assertNotNull("Test if there is valid Camcorder able to loan", camcorderList);
+		String allCamcorder = ResourceCentre.retrieveAllCamcorder(camcorderList);
+		String testOutput = "";
+		assertEquals("Check that ViewAllCamcorderlist", testOutput, allCamcorder);
+		ResourceCentre.loanCamcorder(camcorderList);
+		assertEquals("Test if Camcorder arraylist size is 1?",1, camcorderList.size());
 	}
 
 	@Test
@@ -132,10 +136,11 @@ public class ResourceCentreTest {
 		// fail("Not yet implemented");
 		// write your code here
 
-		assertNull("Test if the Camcorder has not been returned", camcorderList);
-		assertEquals("Test if Camcorder is able to be returned", camcorderList);
-		
-		
+		assertEquals("Test if Camcorder arraylist is empty", camcorderList.isEmpty());
+		assertEquals("Test if Camcorder is able to be returned", camcorderList.add(cc1));
+		assertEquals("Test if Camcorder is able to be returned", camcorderList.add(cc2));
+		assertEquals("Test if Camcorder arraylist size is 2?",2, camcorderList.size());
+
 	}
 
 	@Test
