@@ -132,6 +132,10 @@ public class ResourceCentreTest {
 		// fail("Not yet implemented");
 		// write your code here
 
+		assertNull("Test if the Camcorder has not been returned", camcorderList);
+		assertEquals("Test if Camcorder is able to be returned", camcorderList);
+		
+		
 	}
 
 	@Test
